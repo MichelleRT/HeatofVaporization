@@ -1,7 +1,7 @@
 #Name	PubChem	Heat_of_Vaporization
 n-butane	7843	21.26
 n-hexane	8058	32.00
-n-octane	356 41.69
+n-octane	356	41.69
 n-decane	15600	51.29
 n-dodecane	8182	60.87
 i-butane	6360	21.89
