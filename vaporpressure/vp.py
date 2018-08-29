@@ -47,7 +47,7 @@ PATH = os.path.dirname(os.path.abspath(__file__))
 # cols1, indexToName1 = getColumns(datafile) 
 # datafile.close() 
 
-_training_data = 'Data/Heat_of_Vaporization.txt' 
+_training_data = 'Data/vapor_pressure.txt'  
 
 def _parsePadel(compound, _padel_descriptor):
     '''process Padel output'''
@@ -67,10 +67,10 @@ def _parsePadel(compound, _padel_descriptor):
 ## GET TRAINING DATA FEATURES
 get_sdf = True
 predictor_dict = {}
-# try:
-#     os.mkdir(PATH+'/temp_training_cpd_sdf/')
-# except OSError:
-#     pass
+try:
+    os.mkdir(PATH+'/temp_training_cpd_sdf/')
+except OSError:
+    pass
 with open(_training_data) as fin:
     header = fin.readline().strip()
     for line in fin:
@@ -79,7 +79,7 @@ with open(_training_data) as fin:
         # print (line)
         if get_sdf:
             try:
-                # pcp.download('SDF', PATH+'/temp_training_cpd_sdf/{}.sdf'.format(larray[1]), larray[1], overwrite=True)
+                pcp.download('SDF', PATH+'/temp_training_cpd_sdf/{}.sdf'.format(larray[1]), larray[1], overwrite=True)
                 predictor_dict.setdefault(larray[1], float(larray[2]))
             except (pcp.PubChemHTTPError, httplib.BadStatusLine, urllib2.URLError):
                 print line + ' passed'
@@ -95,9 +95,9 @@ print "The mean value is: ", mean_value_training
 print "The standard deviation value is: ", stdev_value_training
 
 
-# call(["java", "-jar", "PaDEL-Descriptor.jar", "-threads", "-1",
-#         "-dir", PATH+'/temp_training_cpd_sdf/', "-file", 'padel_descriptor_training.out', "-fingerprints",
-#         "-retainorder", "-usefilenameasmolname", "-descriptortypes","./descriptors.xml"])
+call(["java", "-jar", "PaDEL-Descriptor.jar", "-threads", "-1",
+        "-dir", PATH+'/temp_training_cpd_sdf/', "-file", 'padel_descriptor_training.out', "-fingerprints",
+        "-retainorder", "-usefilenameasmolname", "-descriptortypes","./descriptors.xml"])
 training_compounds = _parsePadel({}, 'padel_descriptor_training.out')
 # print training_compounds
 
