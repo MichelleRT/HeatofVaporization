@@ -83,3 +83,5 @@ clf = RandomForestClassifier(max_depth=2, random_state=0)
 model = clf.fit(train, train_labels)
 
 # Make predictions
+pred = clf.predict(test) 
+
