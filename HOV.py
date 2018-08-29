@@ -46,8 +46,8 @@ def getColumns(inFile, delim="\t", header=True):
 
 "Get data from files and make dictionaries/list"
 
-# Get the data from vapor_pressure.txt
-datafile = open("Data/vapor_pressure.txt", "r") 
+# Get the data from Heat_of_Vaporization.txt
+datafile = open("Data/Heat_of_Vaporization.txt", "r") 
 cols1, indexToName1 = getColumns(datafile) 
 datafile.close() 
 
@@ -62,10 +62,11 @@ featfile.close()
 
 "Assign the data"
 
-label_names = ['#Name', 'PubChem', 'Vapor_Pressure'] 
-labels = cols1['#Name'], cols1['PubChem'], cols1['Vapor_Pressure'] 
+label_names = ['#Name', 'PubChem', 'Heat_of_Vaporization'] 
+labels = cols1['#Name'], cols1['PubChem'], cols1['Heat_of_Vaporization'] 
 feature_names = flist
-features = flist # features for each compound
+# We need to pull in the feature values of the compounds using their PubChem IDs
+
 
 
 "Organize data into training and test sets"
