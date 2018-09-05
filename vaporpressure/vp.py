@@ -38,7 +38,7 @@ PATH = os.path.dirname(os.path.abspath(__file__))
 #             i = 0
 #             for cell in cells:
 #                 cell = cell.strip()
-#                 columns[indexToName[i]] += [cell]
+#                 columns[indexToCol[i]] += [cell]
 #                 i += 1          
 #     return columns, indexToCol
 
