@@ -1,11 +1,7 @@
 # HeatofVaporization
 
-A quick classifier for the heat of vaporization. 
+This repository contains two classifiers: one for heat of vaporization and the other
+for vapor pressure. These two classifiers are extremely similar, except for their 
+respective values. 
 
-Use cheminformatic features. 
-
-Random forest classifier (above or below the threshold). 
-
-Two classifiers are made: one for heat of vaporization and one for the vapor pressure. 
-
-The threshold for each is the median of the data for each set, respectively. 
+Note: the classifiers use random forest classification and the PaDEL-Descriptor.jar file. 
